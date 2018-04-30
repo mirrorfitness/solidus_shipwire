@@ -17,8 +17,8 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  s.add_dependency %q<solidus_core>, ['< 3', '>= 1.0.6']
-  s.add_dependency %q<solidus_backend>, ['< 3', '>= 1.0.6']
+  s.add_dependency %q<spree_core>, ['>= 3.0.0']
+  s.add_dependency %q<spree_backend>, ['>= 3.0.0']
   s.add_dependency %q<shipwire>, '~> 2.0'
 
   s.add_development_dependency 'factory_girl', '~> 4.4'

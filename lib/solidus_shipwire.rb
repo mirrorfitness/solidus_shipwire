@@ -1,5 +1,5 @@
-require 'solidus_core'
-require 'solidus_backend'
+require 'spree_core'
+require 'spree_backend'
 
 require 'shipwire'
 
