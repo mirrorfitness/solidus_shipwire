@@ -11,12 +11,12 @@ module Spree
 
     def setup_shipwire
       Shipwire.configure do |config|
-        config.username     = username
-        config.password     = password
-        config.open_timeout = open_timeout
-        config.timeout      = timeout
-        config.endpoint     = endpoint
-        config.logger       = logger
+        config.username     = self.username
+        config.password     = self.password
+        config.open_timeout = self.open_timeout
+        config.timeout      = self.timeout
+        config.endpoint     = self.endpoint
+        config.logger       = self.logger
       end
     end
   end

@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.summary     = 'Solidus shipwire integration'
   s.description = 'This extension provide the ability to connect in a easy '+
                   'way your store and shipwire through API and Webhooks'
-  s.required_ruby_version = '>= 1.8.7'
+  s.required_ruby_version = '>= 2.5.0'
 
   s.author   = 'Daniele Palombo'
   s.email    = 'danielepalombo@nebulab.it'
@@ -17,9 +17,9 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  s.add_runtime_dependency 'solidus_core',    ['>= 1.0', '< 3']
-  s.add_runtime_dependency 'solidus_backend', ['>= 1.0', '< 3']
-  s.add_runtime_dependency 'shipwire', '~> 2.0'
+  s.add_dependency %q<spree_core>, ['>= 3.0.0']
+  s.add_dependency %q<spree_backend>, ['>= 3.0.0']
+  s.add_dependency %q<shipwire>, '~> 2.0'
 
   s.add_runtime_dependency 'solidus_support'
   s.add_runtime_dependency 'retriable'
