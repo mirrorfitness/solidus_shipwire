@@ -21,7 +21,6 @@ Gem::Specification.new do |s|
   s.add_dependency %q<spree_backend>, ['>= 3.0.0']
   s.add_dependency %q<shipwire>, '~> 2.0'
 
-  s.add_runtime_dependency 'solidus_support'
   s.add_runtime_dependency 'retriable'
 
   s.add_development_dependency 'factory_bot', '~> 4.4'
