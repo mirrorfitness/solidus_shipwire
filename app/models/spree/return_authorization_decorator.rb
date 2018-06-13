@@ -1,5 +1,5 @@
 Spree::ReturnAuthorization.class_eval do
-  include SolidusShipwire::Proxy
+  prepend SolidusShipwire::Proxy
 
   after_validation :process_shipwire_return!, if: :create_on_shipwire?
 

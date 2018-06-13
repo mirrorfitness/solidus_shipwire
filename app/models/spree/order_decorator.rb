@@ -1,9 +1,7 @@
 Spree::Order.class_eval do
-  include SolidusShipwire::Proxy
+  prepend SolidusShipwire::Proxy
 
-  def self.prepended(base)
-    base.after_save :update_on_shipwire, if: :update_on_shipwire?
-  end
+  after_save :update_on_shipwire, if: :update_on_shipwire?
 
   def finalize!
     super
@@ -73,5 +71,3 @@ Spree::Order.class_eval do
     Spree::ShipwireConfig.default_warehouse_id
   end
 end
-
-# Spree::Order.prepend SolidusShipwire::Order

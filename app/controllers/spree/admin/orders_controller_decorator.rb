@@ -14,7 +14,7 @@ Spree::Admin::OrdersController.class_eval do
 
   def order_to_shipwire
     @shipwire_data = @order.in_shipwire
-  rescue ResponseException => e
+  rescue SolidusShipwire::ResponseException => e
     @error = e.response
   rescue RuntimeError => e
     @error = e.message

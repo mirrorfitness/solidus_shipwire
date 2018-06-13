@@ -1,6 +1,6 @@
 module SolidusShipwire
   module ShipwireObjects
-    class ReturnAuthorization < SolidusShipwire::ReturnAuthorization::ShipwireObject
+    class ReturnAuthorization < Spree::ReturnAuthorization::ShipwireObject
       def status
         @attrs[:status]
       end

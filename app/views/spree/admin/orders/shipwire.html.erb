@@ -1,19 +1,19 @@
 <% content_for :page_actions do %>
   <% if can?(:fire, @order) %>
-    <li><%= event_links %></li>
+    <%= event_links(@order, @order_events) %>
   <% end %>
   <% if can?(:resend, @order) && @order.completed? %>
-    <li><%= button_link_to Spree.t(:resend), resend_admin_order_url(@order), :method => :post, :icon => 'email' %></li>
+    <%= button_link_to Spree.t(:resend), resend_admin_order_url(@order), method: :post, icon: 'email' %>
   <% end %>
   <% if can?(:admin, Spree::Order) %>
-    <li><%= button_link_to Spree.t(:back_to_orders_list), admin_orders_path, :icon => 'arrow-left' %></li>
+    <%= button_link_to Spree.t(:back_to_orders_list), admin_orders_path, icon: 'arrow-left' %>
   <% end %>
 <% end %>
 
-<%= render :partial => 'spree/admin/shared/order_tabs', :locals => { :current => 'Shipwire' } %>
+<%= render partial: 'spree/admin/shared/order_tabs', locals: { current: 'Shipwire' } %>
 
 <div data-hook="admin_order_edit_header">
-  <%= render :partial => 'spree/shared/error_messages', :locals => { :target => @order } %>
+  <%= render partial: 'spree/shared/error_messages', locals: { target: @order } %>
 </div>
 
 <div data-hook="admin_order_shipwire_form">
