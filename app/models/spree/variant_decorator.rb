@@ -2,23 +2,23 @@ Spree::Variant.class_eval do
   include SolidusShipwire::Proxy
 
   def update_stocks_from_shipwire
-    Shipwire::Stock.new.list( sku: self.sku)
+    Shipwire::Stock.new.list(sku: self.sku)
   end
 
   def to_shipwire
     {
       sku: sku,
-      classification: "baseProduct",
+      classification: 'baseProduct',
       description: name,
-      countryOfOrigin: "US",
-      category: "FURNITURE_&_APPLIANCES",
+      countryOfOrigin: 'US',
+      category: 'FURNITURE_&_APPLIANCES',
       batteryConfiguration: 'NOBATTERY',
       values: {
         costValue: self.price,
       #  wholesaleValue: 2,
         retailValue: self.price,
-        costCurrency: "USD",
-      #  wholesaleCurrency: "USD",
+        costCurrency: 'USD',
+      #  wholesaleCurrency: 'USD',
         retailCurrency: "USD"
       },
       dimensions: {
@@ -31,7 +31,7 @@ Spree::Variant.class_eval do
   end
 
   def to_shipwire_object(hash)
-    ShipwireObject.new(hash["id"], self, hash)
+    SolidusShipwire::ShipwireObject.new(hash['id'], self, hash)
   end
 
   private
