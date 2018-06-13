@@ -1,4 +1,4 @@
-module SolidusShipwire::AddressDecorator
+Spree::Address.class_eval do
   def to_shipwire
     {
       # Recipient details
@@ -14,5 +14,3 @@ module SolidusShipwire::AddressDecorator
     }
   end
 end
-
-Spree::Address.prepend SolidusShipwire::AddressDecorator

@@ -1,5 +1,5 @@
-module SolidusShipwire::Order
-  prepend SolidusShipwire::Proxy
+Spree::Order.class_eval do
+  include SolidusShipwire::Proxy
 
   def self.prepended(base)
     base.after_save :update_on_shipwire, if: :update_on_shipwire?
@@ -74,4 +74,4 @@ module SolidusShipwire::Order
   end
 end
 
-Spree::Order.prepend SolidusShipwire::Order
+# Spree::Order.prepend SolidusShipwire::Order

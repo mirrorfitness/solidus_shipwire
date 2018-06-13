@@ -1,6 +1,6 @@
 module SolidusShipwire
   module ShipwireObjects
-    class Order < SolidusShipwire::Order::ShipwireObject
+    class Order < Spree::Order::ShipwireObject
       def status
         @attrs[:status]
       end
