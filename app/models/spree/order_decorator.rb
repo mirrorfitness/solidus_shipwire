@@ -1,11 +1,13 @@
 Spree::Order.class_eval do
-  prepend SolidusShipwire::Proxy
+  include SolidusShipwire::Proxy
 
   after_save :update_on_shipwire, if: :update_on_shipwire?
 
-  def finalize!
-    super
 
+  alias_method :orig_finalize!, :finalize!
+
+  def finalize!
+    orig_finalize!
     in_shipwire if add_on_shipwire_on_completion?
   end
 

@@ -1,6 +1,6 @@
 module SolidusShipwire
   module Proxy
-    def self.prepended(base)
+    def self.included(base)
       klass = Class.new SolidusShipwire::ShipwireObject
       base.const_set 'ShipwireObject', klass
     end
