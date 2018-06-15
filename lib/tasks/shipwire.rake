@@ -3,6 +3,7 @@ namespace :solidus_shipwire do
   task sync_variants: :environment do
     Spree::Variant.all.each do |v|
       unless v.price.zero?
+        puts "Syncing #{v.name} (Product Id: #{v.product_id})"
         v.in_shipwire
       else
         puts "Skipping #{v.name} (Product Id: #{v.product_id}). Price: #{v.price}"
