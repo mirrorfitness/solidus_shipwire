@@ -2,12 +2,8 @@ namespace :solidus_shipwire do
   desc 'Sync Spree variants in shipwire'
   task sync_variants: :environment do
     Spree::Variant.all.each do |v|
-      unless v.price.zero?
-        puts "Syncing #{v.name} (Product Id: #{v.product_id})"
-        v.in_shipwire
-      else
-        puts "Skipping #{v.name} (Product Id: #{v.product_id}). Price: #{v.price}"
-      end
+      puts "[Shipwire] #{v.can_sync_to_shipwire? ? 'Syncing' : 'Skipping'} #{v.name} (Product Id: #{v.product_id})"
+      v.in_shipwire if v.can_sync_to_shipwire?
     end
   end
 

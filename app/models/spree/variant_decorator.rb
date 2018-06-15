@@ -30,6 +30,11 @@ Spree::Variant.class_eval do
     }
   end
 
+  # Override to prevent variant from syncing
+  def can_sync_to_shipwire?
+    true
+  end
+
   def to_shipwire_object(hash)
     SolidusShipwire::ShipwireObject.new(hash['id'], self, hash)
   end
