@@ -1,0 +1,9 @@
+<!-- insert_bottom '[data-hook="admin_product_form_shipping_categories"]' -->
+<% unless @product.variants.any? %>
+  <div data-hook="admin_product_form_shipwire_id">
+    <%= f.field_container :shipwire_id, class: ['form-group'] do %>
+      <%= f.label "Shipwire ID" %>
+      <%= f.text_field :shipwire_id, value: @product.shipwire_id, class: 'form-control' %>
+    <% end %>
+  </div>
+<% end %>
