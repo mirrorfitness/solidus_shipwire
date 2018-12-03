@@ -23,7 +23,7 @@ Spree::ReturnAuthorization.class_eval do
   private
 
   def create_on_shipwire?
-    order.shipped? && shipwire_order.present?
+    order.shipped? && shipwire_order.present? && eligible_return_items.any?
   end
 
   def process_shipwire_return!
@@ -38,9 +38,14 @@ Spree::ReturnAuthorization.class_eval do
   end
 
   def shipwire_return_items
-    return_items.each_with_object(Hash.new(0)) do |item, hash|
+    eligible_return_items.each_with_object(Hash.new(0)) do |item, hash|
       hash[item.inventory_unit.variant.sku] += 1
     end
+  end
+
+  # Only items actually on shipwire can be returned via shipwire
+  def eligible_return_items
+    return_items.select { |item| item.inventory_unit.variant.shipwire_id.present? }
   end
 
   def generate_prepaid_label
