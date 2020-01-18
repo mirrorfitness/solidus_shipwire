@@ -11,12 +11,13 @@ module Spree
 
     def setup_shipwire
       Shipwire.configure do |config|
-        config.username     = self.username
-        config.password     = self.password
-        config.open_timeout = self.open_timeout
-        config.timeout      = self.timeout
-        config.endpoint     = self.endpoint
-        config.logger       = self.logger
+        # Use get_preference to prevent self.timeout from resolving to Timeout#timeout on Ruby 2.7.0+
+        config.username     = self.get_preference(:username)
+        config.password     = self.get_preference(:password)
+        config.open_timeout = self.get_preference(:open_timeout)
+        config.timeout      = self.get_preference(:timeout)
+        config.endpoint     = self.get_preference(:endpoint)
+        config.logger       = self.get_preference(:logger)
       end
     end
   end
